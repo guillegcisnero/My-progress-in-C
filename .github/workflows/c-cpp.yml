@@ -1,0 +1,18 @@
+name: Revisión de mis ejercicios en C
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  evaluar:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Compilar todos mis ejercicios en C automáticamente
+      run: |
+        for archivo in *.c; do
+          gcc "$archivo" -o "${archivo%.c}"
+        done
